@@ -1,0 +1,229 @@
+
+
+
+
+$primary-color:#444;
+$secondary-color:#eece1a;
+$show-home-image:true;
+$home-image:url(../img/background.jpg);
+
+@mixin easeOut {
+    transition: all 0.5s ease-out;
+}
+@mixin background {
+    @if $show-home-image {
+        &#bg-img{
+           background: $home-image no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+
+        
+        &:after{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: rgba(68,68,68, 0.5);
+            opacity: 0.99;
+        
+        }  
+      }
+               
+    }
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    @include background;
+    background-color: $primary-color;
+    color: #fff;
+    height: 100%;
+    font-family: 'Segoe UI' , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+    
+}
+// Headings
+h1,
+h2,
+h3{
+    font-weight: 400;
+    &.lg-heading{
+        font-size: 6rem;
+    }
+    &.sm-heading{
+        margin-bottom: 2rem;
+        padding: 0.2rem 1rem;
+        background:rgba($primary-color, 0.5);
+    }
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+header{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+.text-secondary{
+    color: $secondary-color;
+}
+main{
+    padding: 4rem;
+    // height: 100%;
+    min-height: calc(100vh - 60px);
+    .icons{
+        margin-top: 1rem;
+        a{
+            padding: 0.4rem;
+            &:hover{
+                color: $secondary-color;
+                @include easeOut;
+            }
+        }
+    }
+    &#home {
+        overflow: hidden;
+        h1{
+            margin-top: 20vh;
+        }
+    }
+}
+
+// About Page
+.about-info{
+    display: grid;
+    grid-gap:30px;
+    grid-template-areas:
+    'bioimage bio bio'
+    'job1 job2 job3';
+    grid-template-columns: repeat(3, 1fr);
+    .bio-image{
+        grid-area: bioimage;
+        margin: auto;
+        border-radius: 50%;
+        border: 3px solid #eece1a;
+    }
+    .bio{
+        grid-area: bio;
+        font-size: 1.5rem;
+    }
+    .job-1{
+        grid-area: job1;
+        span{
+            border: 2px solid #eece1a;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            padding: 2px;
+            margin: 2px;
+        }
+    }
+    .job-2{
+        grid-area: job2;
+        p{
+        text-align: center;
+        i{
+            color: #eece1a;
+            display: block;
+            margin-top:7px ;
+        }
+        }
+    }
+    .job-3{
+        grid-area: job3;
+    }
+    .job {
+        background: lighten($primary-color,  5);
+        padding: 0.5rem;
+        border-bottom: 5px solid $secondary-color;
+        h3{
+            margin-bottom: 0.7rem;
+        }
+        p{
+            padding: 0.5rem;
+        }
+    }  
+}
+// Work Page
+.projects{
+    display: grid;
+    grid-gap: 0.7rem;
+    grid-template-columns: repeat(3 , 1fr);
+    img{
+        width: 100%;
+        border: 3px solid #fff ;
+        &:hover{
+            opacity: 0.5;
+            border-color:#eece1a ;
+            @include easeOut;
+        }
+    }
+
+}
+
+// Contact me Page
+.boxes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1rem;
+    div{
+        font-size: 2rem;
+        border: 3px solid #fff;
+        padding: 1.5rem 2.5rem;
+        margin-bottom: 3rem;
+        @include easeOut;
+        &:hover{
+            padding: 0.5rem 1.5rem;
+            background: #eece1a;
+            color: #fff;
+            span{
+                color: #444;
+            }
+        }
+    }
+}
+
+// Button Style
+.btn{
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 0;
+    margin-bottom: 0.3rem;
+    &:hover{
+        background: #eece1a;
+        color: #fff;
+    }
+}
+.btn-dark{
+    @extend .btn;
+    background: darken($primary-color,50);
+    color: #fff;
+}
+.btn-light{
+    @extend .btn;
+    background: lighten($primary-color,50);
+    color: #333;
+}
+
+#main-footer{
+    text-align: center;
+    padding: 1rem;
+    background: darken($primary-color ,  10);
+    color: #fff;
+    height: 60px;
+}
+
+@import 'menu';
+
+
+
+
